@@ -60,6 +60,7 @@ function createList() {
                 const textElement = document.createElement("p");
                 textElement.innerHTML = message;
                 listElement.replaceChild(textElement, inputField);
+
             } else {
                 if (mainContent.lastChild) {
                     mainContent.removeChild(mainContent.lastChild);
@@ -68,8 +69,13 @@ function createList() {
         } else if (event.key === "Escape") {
             mainContent.removeChild(mainContent.lastChild);
         }
-    })
+    });
+
+    listRemove.addEventListener("click", function() {
+        listElement.remove();
+    });
 }
+
 
 //ADD A TODO FUNCTION
 
