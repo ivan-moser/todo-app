@@ -96,3 +96,7 @@ add.addEventListener("click", createList);
 
 //REFRESH FUNCTION
 
+refresh.addEventListener("click", () => {
+    mainContent.innerHTML = "";
+})
+
