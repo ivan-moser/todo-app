@@ -5,6 +5,7 @@ const mainContainer = document.getElementById("main-container");
 
 const refresh = document.getElementById("refresh");
 const empty = document.getElementById("empty");
+const check = document.getElementById("check");
 const deleteListElement = document.getElementById("delete");
 const add = document.getElementById("add");
 
@@ -85,8 +86,15 @@ function createList() {
 
     listRemove.addEventListener("click", function() {
         listElement.remove();
-        isActive = false;
+        isActive = false;    
     });
+
+    listEmpty.addEventListener("click", function() {
+        const currentSrc = listEmpty.getAttribute("src");
+        const newSrc = currentSrc === "./assets/empty.png" ? "./assets/check-button.png" : "./assets/empty.png";
+        listEmpty.setAttribute("src", newSrc);
+    });
+
 }
 
 
