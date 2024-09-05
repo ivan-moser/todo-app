@@ -8,6 +8,8 @@ const empty = document.getElementById("empty");
 const deleteListElement = document.getElementById("delete");
 const add = document.getElementById("add");
 
+let isActive = false;
+
 
 //CLOCK AND DATE FUNCTIONS
 function updateClock() {
@@ -28,6 +30,8 @@ setInterval(updateClock, 1000);
 //LIST FUNCTIONS
 function createList() {
 
+    if (isActive) return;
+
     const listEmpty = document.createElement("img");
     listEmpty.classList.add("icons");
     listEmpty.id = "empty";
@@ -42,7 +46,7 @@ function createList() {
     const inputField = document.createElement("input");
     inputField.type = "text";
     inputField.classList.add("todo-input");
-    inputField.placeholder = "Type your todo...";
+    inputField.placeholder = "...";
 
     const listElement = document.createElement("div");
     listElement.style = "margin-top: 5px"
@@ -52,6 +56,11 @@ function createList() {
     mainContent.appendChild(listElement);
 
     inputField.focus();
+    isActive = true;
+
+    add.addEventListener("click", () => {
+        inputField.focus();
+    })
 
     inputField.addEventListener("keydown", function(event) {
         if (event.key === "Enter") {
@@ -66,13 +75,17 @@ function createList() {
                     mainContent.removeChild(mainContent.lastChild);
                 }
             }
+            isActive = false;
+            inputField.focus();
         } else if (event.key === "Escape") {
             mainContent.removeChild(mainContent.lastChild);
+            isActive = false;
         }
     });
 
     listRemove.addEventListener("click", function() {
         listElement.remove();
+        isActive = false;
     });
 }
 
