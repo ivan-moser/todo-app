@@ -12,6 +12,7 @@ body, html {
     display: inline-flex;
     flex-direction: column;
     width: 550px;
+    height: 700px;
     background-color: #fff;
     border-radius: 6px;
     position: absolute;
@@ -19,6 +20,8 @@ body, html {
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+/* HEADER SPACE */
 
 #header {
     display: flex;
@@ -31,14 +34,27 @@ body, html {
 #header img {
     justify-self: end;
     width: 1rem;
-    height: 1rem;
+    height: 1rem; 
 }
 
-#footer {
-    display: flex;
-    align-items: center;
-    border-top: 2px solid rgba(0, 0, 0, 0.1);
-    gap: 20px;
+/* MAIN SPACE */
+
+#date-time {
+    margin-top: 30px;
+    text-align: center;
+}
+
+#time {
+    color: #333;
+    font-weight: 200;
+    font-size: 70px;
+    line-height: 70px;
+    margin: 0;
+}
+
+#date {
+    margin: 0;
+    color: #333;
 }
 
 .list {
@@ -53,6 +69,16 @@ body, html {
     margin-left: auto;
 }
 
+/* FOOTER SPACE */
+
+#footer {
+    display: flex;
+    align-items: center;
+    margin-top: auto;
+    border-top: 2px solid rgba(0, 0, 0, 0.1);
+    gap: 20px;
+}
+
 .padding {
     padding: 20px;
 }
@@ -60,6 +86,7 @@ body, html {
 .icons {
     width: 30px;
     height: 30px;
+    cursor: pointer;
 }
 
 h1, h2 {
