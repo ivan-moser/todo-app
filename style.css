@@ -76,6 +76,10 @@ body, html {
     gap: 20px;
     justify-content: space-between;
     cursor: pointer;
+
+    /* updates */
+    transition: transform 0.2s ease;
+    position: relative;
 }
 
 .list p {
@@ -85,6 +89,10 @@ body, html {
 
 .list .icons.delete {
     margin-left: auto;
+}
+
+.dragging {
+    opacity: 0.5;
 }
 
 .todo-input {

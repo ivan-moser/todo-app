@@ -106,13 +106,13 @@ mainContent.addEventListener("dragstart", (event) => {
     draggedItem.classList.add("dragging");
 
     setTimeout(() => {
-        event.target.style.display = "none";
+        event.target.style.opacity = "0";
     }, 0);
 });
 
 mainContent.addEventListener("dragend", (event) => {
     setTimeout(() => {
-        event.target.style.display = "";
+        event.target.style.opacity = "1";
         draggedItem.classList.remove("dragging");
         draggedItem = null;
     }, 0);
@@ -147,6 +147,14 @@ const getDragAfterElement = (container, y) => {
             return closest;
         }
     }, { offset: Number.NEGATIVE_INFINITY }).element;
+};
+
+const animateList = () => {
+    const draggableElements = [...mainContent.querySelectorAll(".list:not(.dragging)")];
+
+    draggableElements.forEach((element, index) => {
+        element.style.transform = `translateY(${index * 5}px)`;
+    });
 };
 
 
