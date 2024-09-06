@@ -5,7 +5,8 @@ This app will help you to orginize all your todo stuff in a simple way :)
 ## Description
 A simple todo app, where you can add tasks, check if you have completed them, remove them and if you want, refresh the entire list.
 
-![image](https://github.com/user-attachments/assets/ecafa6cf-0874-4c1d-b009-6e462bef5035)
+![image](https://github.com/user-attachments/assets/ee8bbb8f-fff8-423c-8d23-c0840f89bf55)
+
 
 ## Concepts
 Here we go through some different important concepts of the front-end, from a strong usage of the DOM manipulation
