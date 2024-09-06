@@ -63,9 +63,15 @@ body, html {
 
 #main-content {
     flex-grow: 1;
-    overflow-y: auto;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
     padding: 10px;
     box-sizing: border-box;
+}
+
+#main-content::-webkit-scrollbar {
+    display: none;
 }
 
 .list {
@@ -76,8 +82,6 @@ body, html {
     gap: 20px;
     justify-content: space-between;
     cursor: pointer;
-
-    /* updates */
     transition: transform 0.2s ease;
     position: relative;
 }
