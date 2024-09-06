@@ -50,8 +50,9 @@ function createList() {
     inputField.placeholder = "...";
 
     const listElement = document.createElement("div");
-    listElement.style = "margin-top: 5px"
+    listElement.style = "margin-top: 5px";
     listElement.classList.add("list");
+    listElement.setAttribute("draggable", "true"); 
 
     listElement.append(listEmpty, inputField, listRemove);
     mainContent.appendChild(listElement);
@@ -96,6 +97,58 @@ function createList() {
     });
 
 }
+
+//SET THEM SORTABLE
+let draggedItem = null;
+
+mainContent.addEventListener("dragstart", (event) => {
+    draggedItem = event.target;
+    draggedItem.classList.add("dragging");
+
+    setTimeout(() => {
+        event.target.style.display = "none";
+    }, 0);
+});
+
+mainContent.addEventListener("dragend", (event) => {
+    setTimeout(() => {
+        event.target.style.display = "";
+        draggedItem.classList.remove("dragging");
+        draggedItem = null;
+    }, 0);
+});
+
+mainContent.addEventListener("dragover", (event) => {
+    event.preventDefault();
+
+    const afterElement = getDragAfterElement(mainContent, event.clientY);
+    const currentElement = document.querySelector(".dragging");
+
+    if (afterElement === null) {
+        mainContent.appendChild(draggedItem);
+    } else {
+        mainContent.insertBefore(draggedItem, afterElement);
+    }
+});
+
+const getDragAfterElement = (container, y) => {
+    const draggableElements = [...container.querySelectorAll(".list")];
+
+    return draggableElements.reduce((closest, child) => {
+        const box = child.getBoundingClientRect();
+        const offset = y - box.top - box.height / 2;
+
+        if (offset < 0 && offset > closest.offset) {
+            return {
+                offset: offset,
+                element: child
+            };
+        } else {
+            return closest;
+        }
+    }, { offset: Number.NEGATIVE_INFINITY }).element;
+};
+
 
 
 //ADD A TODO FUNCTION
